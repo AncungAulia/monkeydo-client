@@ -93,14 +93,11 @@ const Dashboard = ({ theme, toggleTheme }) => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      const token = localStorage.getItem("auth_token");
       await axios.put(
-        `http://localhost:5000/todos/${editingTodo.todo_id}`,
+        `https://tugas-gdsc.vercel.app/api/v1/todos/${editingTodo.todo_id}`,
         editingTodo,
         {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          withCredentials: true,
         }
       );
       setShowEditModal(false);
@@ -113,12 +110,12 @@ const Dashboard = ({ theme, toggleTheme }) => {
 
   const handleDelete = async (todoId) => {
     try {
-      const token = localStorage.getItem("auth_token");
-      await axios.delete(`http://localhost:5000/todos/${todoId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      await axios.delete(
+        `https://tugas-gdsc.vercel.app/api/v1//todos/${todoId}`,
+        {
+          withCredentials: true,
+        }
+      );
       setShowDeleteModal(false);
       setTodoToDelete(null);
       fetchTodos();
