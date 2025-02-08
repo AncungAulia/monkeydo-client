@@ -6,7 +6,6 @@ import Registration from "./components/Registration";
 import Onboard from "./components/Onboard";
 import Dashboard from "./components/Dashboard";
 import Create from "./components/Create";
-import Profile from "./components/Profile";
 
 function App() {
   const [theme, setTheme] = useState("light");
@@ -48,10 +47,6 @@ function App() {
               <Route
                 path="/dashboard/create"
                 element={<Create theme={theme} toggleTheme={toggleTheme} />}
-              />
-              <Route
-                path="/dashboard/profile"
-                element={<Profile theme={theme} toggleTheme={toggleTheme} />}
               />
             </Routes>
           </div>
