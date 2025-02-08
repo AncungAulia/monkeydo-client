@@ -59,25 +59,16 @@ const Create = ({ theme, toggleTheme }) => {
     }
 
     try {
-      const token = localStorage.getItem("auth_token");
-      if (!token) {
-        setError("Authentication token not found. Please login again.");
-        navigate("/login");
-        return;
-      }
-
       const formattedData = {
         ...formData,
         due_date: new Date(formData.due_date).toISOString(),
       };
 
       const response = await axios.post(
-        "http://localhost:5000/todos",
+        "https://tugas-gdsc.vercel.app/api/v1/todos",
         formattedData,
         {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          withCredentials: true,
         }
       );
 

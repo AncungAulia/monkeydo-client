@@ -43,7 +43,10 @@ const Dashboard = ({ theme, toggleTheme }) => {
   const fetchTodos = async () => {
     try {
       const response = await axios.get(
-        "https://tugas-gdsc.vercel.app/api/v1/todos"
+        "https://tugas-gdsc.vercel.app/api/v1/todos",
+        {
+          withCredentials: true,
+        }
       );
       setTodos(response.data);
       calculateStats(response.data);
