@@ -6,10 +6,11 @@
       "use": "@vercel/node"
     }
   ],
+  "outputDirectory": "dist",
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/"
+      "dest": "index.html"
     }
   ]
 }
