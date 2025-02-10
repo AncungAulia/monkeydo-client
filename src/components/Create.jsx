@@ -87,7 +87,6 @@ const Create = ({ theme, toggleTheme }) => {
     } catch (err) {
       if (err.response?.status === 401 || err.response?.status === 403) {
         setError("Session expired. Please login again.");
-        localStorage.removeItem("auth_token");
         navigate("/login");
       } else {
         setError(err.response?.data?.error || "Failed to create todo");

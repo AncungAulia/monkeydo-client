@@ -16,7 +16,6 @@ const NavbarDashboard = ({ theme, toggleTheme }) => {
   const navLinks = [
     { to: "/dashboard", icon: LayoutDashboard, text: "Dashboard" },
     { to: "/dashboard/create", icon: Plus, text: "Create" },
-    { to: "/dashboard/profile", icon: User, text: "Profile" },
   ];
 
   return (
