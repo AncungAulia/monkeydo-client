@@ -14,8 +14,9 @@ const Create = ({ theme, toggleTheme }) => {
     title: "",
     description: "",
     due_date: "",
-    priority: "medium",
+    priority: 2,
   });
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -85,6 +86,7 @@ const Create = ({ theme, toggleTheme }) => {
         navigate("/dashboard");
       }, 1500);
     } catch (err) {
+      console.log(err.message);
       if (err.response?.status === 401 || err.response?.status === 403) {
         setError("Session expired. Please login again.");
         navigate("/login");
@@ -97,9 +99,9 @@ const Create = ({ theme, toggleTheme }) => {
   };
 
   const priorityOptions = [
-    { value: "high", label: "High", color: "bg-red-500" },
-    { value: "medium", label: "Medium", color: "bg-yellow-500" },
-    { value: "low", label: "Low", color: "bg-green-500" },
+    { value: 3, label: "High", color: "bg-red-500" },
+    { value: 2, label: "Medium", color: "bg-yellow-500" },
+    { value: 1, label: "Low", color: "bg-green-500" },
   ];
 
   return (
