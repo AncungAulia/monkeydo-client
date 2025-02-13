@@ -17,7 +17,6 @@ const Create = ({ theme, toggleTheme }) => {
     priority: 2,
   });
 
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -79,7 +78,7 @@ const Create = ({ theme, toggleTheme }) => {
         title: "",
         description: "",
         due_date: "",
-        priority: "medium",
+        priority: 2,
       });
 
       setTimeout(() => {
