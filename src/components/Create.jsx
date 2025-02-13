@@ -21,7 +21,7 @@ const Create = ({ theme, toggleTheme }) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: name === "priority" ? parseInt(value) : value,
     }));
     setError("");
   };
