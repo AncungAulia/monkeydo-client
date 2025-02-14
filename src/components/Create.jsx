@@ -14,14 +14,14 @@ const Create = ({ theme, toggleTheme }) => {
     title: "",
     description: "",
     due_date: "",
-    priority: 2,
+    priority: "medium",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: name === "priority" ? parseInt(value) : value,
+      [name]: value,
     }));
     setError("");
   };
@@ -60,7 +60,7 @@ const Create = ({ theme, toggleTheme }) => {
 
     try {
       const date = new Date(formData.due_date);
-      const formattedDate = date.toISOString().split('T')[0];
+      const formattedDate = date.toISOString().split("T")[0];
 
       const formattedData = {
         ...formData,
@@ -100,9 +100,9 @@ const Create = ({ theme, toggleTheme }) => {
   };
 
   const priorityOptions = [
-    { value: 3, label: "High", color: "bg-red-500" },
-    { value: 2, label: "Medium", color: "bg-yellow-500" },
-    { value: 1, label: "Low", color: "bg-green-500" },
+    { value: "high", label: "High", color: "bg-red-500" },
+    { value: "medium", label: "Medium", color: "bg-yellow-500"},
+    { value: "low", label: "Low", color: "bg-green-500" },
   ];
 
   return (
@@ -173,7 +173,7 @@ const Create = ({ theme, toggleTheme }) => {
                       bg-white dark:bg-gray-700 text-gray-900 dark:text-white
                       focus:ring-2 focus:ring-blue-500 focus:border-transparent
                       transition-colors"
-                    min={new Date().toISOString().split('T')[0]}
+                    min={new Date().toISOString().split("T")[0]}
                   />
                 </div>
               </div>
