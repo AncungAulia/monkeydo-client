@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import NavbarDashboard from "./NavbarDashboard";
-import { Calendar, Clock, AlertCircle, ArrowLeft } from "lucide-react";
+import { Calendar, Clock, AlertCircle } from "lucide-react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -59,9 +59,12 @@ const Create = ({ theme, toggleTheme }) => {
     }
 
     try {
+      const date = new Date(formData.due_date);
+      const formattedDate = date.toISOString().split('T')[0];
+
       const formattedData = {
         ...formData,
-        due_date: new Date(formData.due_date).toISOString(),
+        due_date: formattedDate,
       };
 
       const response = await axios.post(
@@ -85,7 +88,6 @@ const Create = ({ theme, toggleTheme }) => {
         navigate("/dashboard");
       }, 1500);
     } catch (err) {
-      console.log(err.message);
       if (err.response?.status === 401 || err.response?.status === 403) {
         setError("Session expired. Please login again.");
         navigate("/login");
@@ -136,7 +138,7 @@ const Create = ({ theme, toggleTheme }) => {
                 />
               </div>
 
-              {/* Deskripsi */}
+              {/* Description */}
               <div>
                 <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-200">
                   Description <span className="text-red-500">*</span>
@@ -155,7 +157,7 @@ const Create = ({ theme, toggleTheme }) => {
                 />
               </div>
 
-              {/* Tanggal */}
+              {/* Due Date */}
               <div>
                 <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-200">
                   Due Date <span className="text-red-500">*</span>
@@ -163,7 +165,7 @@ const Create = ({ theme, toggleTheme }) => {
                 <div className="relative">
                   <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500" />
                   <input
-                    type="datetime-local"
+                    type="date"
                     name="due_date"
                     value={formData.due_date}
                     onChange={handleChange}
@@ -171,12 +173,12 @@ const Create = ({ theme, toggleTheme }) => {
                       bg-white dark:bg-gray-700 text-gray-900 dark:text-white
                       focus:ring-2 focus:ring-blue-500 focus:border-transparent
                       transition-colors"
-                    min={new Date().toISOString().slice(0, 16)}
+                    min={new Date().toISOString().split('T')[0]}
                   />
                 </div>
               </div>
 
-              {/* Prioritas */}
+              {/* Priority */}
               <div>
                 <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-200">
                   Priority Level <span className="text-red-500">*</span>

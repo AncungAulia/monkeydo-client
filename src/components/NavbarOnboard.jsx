@@ -27,7 +27,7 @@ const NavbarOnboard = ({ theme, toggleTheme }) => {
               />
               <div className="relative">
                 <span className="text-2xl md:text-3xl font-titilliumWeb font-bold">
-                  To-Do-List
+                  MonkeyDo
                 </span>
                 <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-banana transition-all duration-200 group-hover:w-full"></span>
               </div>
